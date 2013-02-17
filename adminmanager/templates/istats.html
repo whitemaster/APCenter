@@ -3,7 +3,7 @@
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-  <script>
+  <script> {# мы тоже иногда этим грешим, но встраивать скрипты в html - дурной тон, ухудшает читабельность, снижает производительность, засчёт того, что js обрабатывает django вместо веб-сервера #}
     $(function() {
       var timer = null;
       var sent = 0;
