@@ -1,0 +1,88 @@
+<html>
+
+   <head>
+        <title>Registration</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="/static/styles/style.css" media="screen" />
+<link rel="stylesheet" href="/static/styles/media-queries.css" />
+<link href="/static/styles/prettyPhoto.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/static/styles/tipsy.css" rel="stylesheet" type="text/css" media="screen" />
+   </head>
+
+   <body>
+
+<form name="registration" action="/register/response/" method="post">
+    
+ <table  border="0" cellspacing="5" cellpadding="5">
+
+   <h1 style="background-color: #619ec2;">Registration form</h1>
+
+   <tr>
+    <td align="right" valign="top">Login</td>
+    <td><input type="text" name="login" size="25"></td>
+   </tr>
+   
+   <tr>
+    <td align="right" valign="top">First name</td>
+    <td><input type="text" name="first_name" size="25"></td>
+   </tr>
+   
+   <tr>
+    <td align="right" valign="top">Second name</td>
+    <td><input type="text" name="second_name" size="25"></td>
+   </tr>
+
+   <tr>
+    <td align="right" valign="top">E-mail</td>
+    <td><input type="text" name="email" size="25"></td>
+   </tr>
+
+   <tr>
+    <td align="right" valign="top" >Password</td>
+    <td>
+     <input type="password" name="password" size="25">
+    </td>
+   </tr>
+
+   <tr>
+    <td align="right" valign="top" >Repeat password</td>
+    <td>
+     <input type="password" name="password2" size="25">
+    </td>
+   </tr>
+
+   <tr>
+    <td align="right" valign="top" >Sex</td>
+    <td>
+      <input type="radio" name="sex" value="man" checked>
+      man
+      <input type="radio" name="sex" value="woman">
+      woman
+    </td>
+   </tr>
+
+   <tr>
+    <td align="right" valign="top">Your wishes</td>
+    <td>
+     <textarea name="wishes" cols="30" rows="3" wrap="physical">
+     </textarea>
+    </td>
+   </tr>
+
+   <tr>
+    <td align="right" colspan="2">
+     <input type="submit" name="submit" value="Send">
+     <input type="reset" name="reset" value="Clear">
+    </td>
+   </tr>
+
+ </table>
+
+</form>
+
+   </body>
+
+</html>

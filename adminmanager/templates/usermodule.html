@@ -1,0 +1,136 @@
+<html>
+<head>
+	<title>Admin Password Center</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="/static/styles/style.css" media="screen" />
+<link rel="stylesheet" href="/static/styles/media-queries.css" />
+<link href="/static/styles/prettyPhoto.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/static/styles/tipsy.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" charset="utf-8">
+        function ajax_request(){
+            $('#intestines1').load('/user/editor/');
+        }
+		function csv_ajax_request(){
+            $('#intestines1').load('/user/output/');
+        }
+		function generate_ajax_request(){
+            $('#intestines1').load('/user/generate/');
+        }
+		function base_ajax_request(){
+            $('#intestines1').load('/user/base/');
+        }
+		function del_ajax_request(){
+            $('#intestines1').load('/user/edit/');
+        }
+	</script>
+</head>
+<body>
+<h1 style="background-color:#619ec2;" >User administration module</h1>
+<p><a href="/user/logout/">Logout</a> {{ my_login }}</p>
+<table>
+	<tr><td width="25%">
+	<h3>Open base file..</h3>
+	<form action="/user/output/" method="post" enctype="multipart/form-data">
+		File: <input type="file" name="csv_file" ><br />
+		<input type="submit" value="Open csv" onclick="csv_ajax_request();">
+	</form>
+	<form action="/user/base/" method="post" enctype="multipart/form-data">
+		<input type="submit" value="Open base" onclick="base_ajax_request();">
+	</form>
+	<h3>Base editor</h3>
+	<form name="base_view" method="POST" action="/user/editor/">
+		Title:<br>
+		<input type="text" name="title" size="20"
+				maxlength="50"><br>
+		Login:<br>
+		<input type="login" name="login1" size="20"
+				maxlength="50"><br>
+		Password:<br>
+		<input type="password" name="pass" size="20"
+				maxlength="50">
+		<br>
+		URL:<br>
+		<input type="text" name="url"><br>
+		<input type="reset" name="reset" value="Reset">
+		<input type="submit" name="submit" onclick="ajax_request();" value="Add">
+	</form>
+	</td><td></td>
+	{% block content %}
+	<td style="vertical-align:top;" width="49.5%">
+		<table border="1" align="center" width="100%">
+		
+		<div id="intestines1">
+		
+			<tr align="center">
+                <td>Title</td>
+                <td>Login</td>
+                <td>Password</td>
+				<td>URL</td>
+				<td>Delete</td>
+				<td>Edit</td>
+			</tr>
+			{% for row in data %}
+			<tr align="center">
+                <td>{{ row.0|addslashes }}</td>
+				<td>{{ row.1|addslashes }}</td>
+				<td>{{ row.2|addslashes }}</td>
+				<td>{{ row.3|addslashes }}</td>
+				<td>{{ row.4|addslashes }}</td>
+				<td></td>
+			{% endfor %}
+			</tr>
+			<form action="/user/edit/" method="post" name="editor">
+            {% for s in  view_csvbox %}
+			<tr align="center">
+                <td>{{ s.title }}</td>
+                <td>{{ s.login_base }}</td>
+                <td>{{ s.password }}</td>
+				<td>{{ s.url }}</td>
+				<td><input type="radio" name="del_index" value="{{ s.id }}"></td>
+				<td><input type="radio" name="editor_index" value="{{ s.id }}"></td>
+			</tr>
+            {% endfor %}
+			<tr align="center">
+                <td></td><td></td><td></td><td></td>				
+				<td><input type="submit" name="submit" onclick="del_ajax_request();" value="Delete"></td>
+				<td><input type="submit" name="submit" onclick="edit_ajax_request();" value="Edit"></td>
+			</tr>
+			</form>
+		</div>		
+		
+		<tr><td colspan="5" align="center">
+			<p>---------------------------------------------</p>
+			<p>&copy; 2013, Khuzin Rinat, gr.5517</p>
+			<img src="/static/images/notebook0.jpg" height="50px" width="50px" id="intestine_style">
+		</td></tr>
+		</table>
+	</td>
+	<td align="left" width="25.5%">
+		<h3>Generate Password</h3>
+		<p align="left">Алгоритм: password = base64(hmac(secret, url))</p>
+		<p>Secret — ваш секретный ключ (любой набор букв, цифр, пробелов и других символов) — секретная информация.</p>
+		<p>URL — адрес сайта или любое другое слово (например, google.com или vasya@example.com) — публичная информация.</p>
+		<div>
+		<form action="/user/generate/" method="post" name="generator">
+			<p>Secret:</p>
+			<input type="text" name="secret" size="20" maxlength="128">
+			<p>URL:</p>
+			<input type="text" name="gen_url" size="20" maxlength="128">
+			<p>Max_length:</p>
+			<input type="text" name="max_len" size="20" maxlength="12">
+			<input type="submit" name="submit" onclick="generate_ajax_request();" value="Generate">
+		</form>
+		
+		</div>
+		<p><br><br><br><br></p><div>
+		<p style="background-color:#619ec2;" align="center">{{ generated_pas }}</p>
+		</div>
+	</td>
+	{% endblock %}
+	</tr>
+</table>
+</body>
+</html>

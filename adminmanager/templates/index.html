@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Password Saver</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="/static/styles/style.css" media="screen" />
+<link rel="stylesheet" href="/static/styles/media-queries.css" />
+<link href="/static/styles/prettyPhoto.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/static/styles/tipsy.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script type="text/javascript" src="/static/scripts/jquery-1.7.1.min.js"></script>
+<script src="/static/scripts/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script src="/static/scripts/jquery.tipsy.js" type="text/javascript"></script>
+<script src="/static/scripts/jquery.knob.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/scripts/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="/static/scripts/jquery.smooth-scroll.min.js"></script>
+<script type="text/javascript" src="/static/scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="/static/scripts/setup.js"></script>
+
+
+</head>
+<body>
+<div id="wrap"> 
+  <!-- wrapper -->
+  <div id="sidebar"> 
+    <!-- the  sidebar --> 
+    <!-- logo --> 
+    <a href="#" id="logo"> <img src="/static/images/logo.png" alt="" /></a> 
+    <!-- navigation menu -->
+    <ul id="navigation">
+	  <li><a href="#industries">Добро пожаловать!</a></li>
+      <li><a href="#home" class="active">Домашняя</a></li>
+      <li><a href="#about">Еще..</a></li>
+      <li><a href="#portfolio">Документация</a></li>
+    </ul>
+  </div>
+  <div id="container"> 
+    <!-- page container -->
+    <div class="page" id="home"> 
+      <!-- page home -->
+      <div class="page_content">
+	  <div class="page" id="industries"> 
+      <!-- page industries -->
+      <h3 class="page_title">Password Saver</h3>
+      <div class="page_content">
+        <p>Централизованная система хранения паролей.</p>
+		<p> - Высокая безопасность. Поддержка Advanced Encryption Standard (AES256, Rijndael); </p>
+		<p> - Экспорт списка паролей в файлы CSV; </p>
+		<p> - Хранение базы паролей частями, одной (малой) части ФП в собственных хранилищах, другой на сервере </p>
+		<p> - Генератор случайных паролей с возможностью его настройки; </p>
+      </div>
+    </div>
+        <!-- services -->
+        <div class="one_half first">
+          <div class="column_content">
+            <h4>Авторизация</h4>
+            <p>
+			<form name="authorize" method="POST" action="/user/">
+				<table>
+				<tr><td>Login:<input type="login" name="login" size="20"
+						maxlength="50"></td></tr>
+				<tr><td>Password:
+				<input type="password" name="pass" size="20"
+						maxlength="50">
+				<br>
+				File part:<br>
+				<input type="file" name="browse"><br>
+				<input type="submit" name="submit" value="Login">
+				</td></tr>
+				</table>
+			</form>
+			</p>
+          </div>
+        </div>
+        <div class="one_half last">
+          <div class="column_content">
+            <h4>Регистрация</h4>
+            <img src="/static/images/responsive.png" class="left no_border" alt="" style="margin-top: 10px;
+                                margin-right: 10px" />
+            <p><a href="/register/">Регистрация</a></p>
+          </div>
+        </div>
+        <div class="space"> </div>
+
+        <div class="clear"> </div>
+      </div>
+    </div>
+    <div class="page" id="about"> 
+      <!-- page about -->
+      <h3 class="page_title"> Еще.. </h3>
+      <div class="page_content">
+        <p>Другие работы автора можно посмотреть здесь: </p>
+        <p> https://github.com/g1pn0z</p>
+        <div class="clear"> </div>
+      </div>
+    </div>
+    <div class="page" id="portfolio"> 
+      <!-- page portfolio -->
+      <h3 class="page_title">Документация</h3>
+      <div class="page_content">
+        <p>- Добавление базы данных</p>
+		<p>- Добавление записей</p>
+		<p>В левом меню заполните необходимые поля вашей учетной записи: Title, Login, Password, URL. Далее нажмите [Add] - данные успешно добавлены либо вывод страницы ошибки(Error in saving). При успешно выполненной операции вы сможете увидеть изменения нажав [Open base] в левой части страницы. Теперь у вас есть новая запись в списке паролей!</p>
+		<p>- Редактирование записей</p>
+		<p>Редактирование записей происходит на отдельной странице. Сначала посмотрев записи кнопкой [Open base] выбираете чекбоксами строки для редактирования. Потом нажимаете [Edit]. В новом окне правите все записи которые хотели обновить. Нажимете [Update].</p>
+		<p>- Удаление записей</p>
+		<p>Удаление записи происходит во время просмотра базы паролей. Выбирая чекбоксами какие строки нужно удалить нажимаете кнопку [Delete]. Будьте внимательны! В данной версии продукта строки удаляются сразу после нажатия кнопки.</p>
+		<p>- Генерация паролей</p>
+		<p>Генератор паролей расположен в правой части экрана. Generate Password: используется публичный алгоритм, использующий ваш секретный ключ(Secret) и адрес сайта(URL). Также можно указать длину пароля(Max_length). Далее нажимаете [Generate] - пароль будет отображен ниже, можете его скопировать.</p>
+        <ul id="works_filter">
+          <li><a href="#" data-filter="*" class="selected">Все</a></li>
+          <li><a href="#" data-filter=".css">Генерация</a></li>
+          <li><a href="#" data-filter=".html_php">Алгоритм AES</a></li>
+          <li><a href="#" data-filter=".js">Запись в базу</a></li>
+        </ul>
+        <div class="clear"> </div>
+        <div id="works"> 
+          <!-- works --> 
+          <a rel="prettyPhoto[gallery]" href="/static/images/photos/01.jpg"> <img class="work js" src="/static/images/photos/01.jpg" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/03.jpg"> <img class="work css" src="/static/images/photos/03.jpg" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/04.png"> <img class="work html_php" src="/static/images/photos/04.png" alt="" /> </a><a rel="prettyPhoto[gallery]" href="images/photos/05.png"> <img class="work html_php" src="/static/images/photos/05.png" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/06.jpg"> <img class="work css" src="/static/images/photos/06.jpg" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/07.jpg"> <img class="work js" src="/static/images/photos/07.jpg" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/08.png"> <img class="work html_php" src="/static/images/photos/08.png" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/09.jpg"> <img class="work js" src="/static/images/photos/09.jpg" alt="" /> </a><a rel="prettyPhoto[gallery]" href="/static/images/photos/10.png"> <img class="work html_php" src="/static/images/photos/10.png" alt="" /> </a> </div>
+        <div class="clear"> </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p> &copy; 2013, National Research University of Information Technologies, Mechanics and Optics </p>
+      <p> Khuzin Rinat, group 5517, Password Saver </p>
+    </div>
+  </div>
+</div>
+<a class="gotop" href="#top">Наверх</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Admin Password Center</title>
+	
+</head>
+<body>
+<h1>Welcome to Password Saver!</h1>
+
+<form name="authorize" method="POST" action="/user/">
+    Login:<br>
+    <input type="login" name="login" size="20"
+            maxlength="50"><br>
+    Password:<br>
+    <input type="password" name="pass" size="20"
+            maxlength="50">
+	<br>
+	File part:<br>
+	<input type="file" name="browse"><br>
+	<input type="reset" name="reset" value="Reset">
+	<input type="submit" name="submit" value="Login">
+</form>
+
+<a href="/register/">Регистрация</a>
+
+</body>
+</html>

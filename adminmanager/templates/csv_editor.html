@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>Admin Password Center</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="/static/styles/style.css" media="screen" />
+<link rel="stylesheet" href="/static/styles/media-queries.css" />
+<link href="/static/styles/prettyPhoto.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/static/styles/tipsy.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" charset="utf-8">
+        function ajax_request(){
+            $('#intestines1').load('/user/editor/');
+        }
+	</script>
+</head>
+<body>
+<h1 style="background-color: #619ec2;">User administration module</h1>
+<table>
+	<tr><td>
+	<h3>Open base file..</h3>
+	<form action="/user/output/" method="post" enctype="multipart/form-data">
+		File: <input type="file" name="csv_file"><br />
+		Description: <input type="text" name="url"><br />
+		<input type="submit" value="OPEN">
+	</form>
+	<form name="authorize" method="POST" action="/user/editor/">
+		Title:<br>
+		<input type="text" name="title" size="20"
+				maxlength="50"><br>
+		Login:<br>
+		<input type="login" name="login" size="20"
+				maxlength="50"><br>
+		Password:<br>
+		<input type="password" name="pass" size="20"
+				maxlength="50">
+		<br>
+		URL:<br>
+		<input type="text" name="url"><br>
+		<input type="reset" name="reset" value="Reset">
+		<input type="submit" name="submit" value="Add">
+	</form>
+	</td><td></td>
+	<td style="vertical-align:top;">
+		<table border="1" align="center">
+		<tr><td>
+		
+		{% block content %}
+		<div id="intestines1">
+			{% for row in data %}
+			"{{ row.0|addslashes }}", "{{ row.1|addslashes }}", "{{ row.2|addslashes }}", "{{ row.3|addslashes }}", "{{ row.4|addslashes }}"
+			{% endfor %}
+		</div>
+		{% endblock %}
+		
+		</td></tr>
+		</table>
+	</td>
+	</tr>
+</table>
+</body>
+</html>
