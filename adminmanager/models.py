@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.fields.related import ForeignKey
-from django.contrib import admin
+from django.db.models.fields.related import ForeignKey # зачем?!
+from django.contrib import admin # админку принято конфигурировать в отдельном файле admin.py 
 
-from PIL import Image
-import urllib
-import os
+from PIL import Image # ну предположим, это когда-нибудь понадобится, хотя не понимаю зачем сложная библиотека по работе с картинками в хранилище паролей
+import urllib # а это зачем?
+import os # и это
 
 class Users(models.Model): # 1) по большей части дублируется стандартная модель User, причём зря,
 			   #    отсюда вытекает невозможность использовать стандартные батарейки: 
