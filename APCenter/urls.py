@@ -8,6 +8,7 @@ from django.views.generic import list_detail
 # from django.contrib import admin
 # admin.autodiscover()
 
+#В файле урл не принято взаимодействовать с базой данных. 
 csv_info = {
     "queryset" : CSVBox.objects.all(),
 	"template_name": "usermodule.html",
