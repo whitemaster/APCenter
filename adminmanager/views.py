@@ -19,7 +19,7 @@ def reg_test(request):
 	
 def register_response(request):
 	you_sex = 0
-	if 'first_name' in request.POST:
+	if 'first_name' in request.POST: # здесь нужно использовать django.forms
 		if request.POST['sex'] == 'man':
 			you_sex = 0
 		else:
@@ -34,7 +34,7 @@ def register_response(request):
 		man = 'username'
 		t = get_template('register_response.html')
 		message = t.render(Context({'first_name': man}))
-	return HttpResponse(message)
+	return HttpResponse(message) # не понятно, почему не использовать shortcut?! 
 	
 def some_view(request):
     # Create the HttpResponse object with the appropriate CSV header.
@@ -86,7 +86,7 @@ def output_csvbox(request):
 	return render_to_response('usermodule.html', {'view_csvbox': now})	
 
 #testing script
-def usercenter(request):
+def usercenter(request): # в django принятно именовать представления с использованием нижнего подчёркивания между словами, вот так: user_center 
 	try:
 		m = Users.objects.get(login=request.POST['login'])
 		if m.passwd == request.POST['pass']:
@@ -138,4 +138,4 @@ def logout(request):
         del request.session['member_id']
     except KeyError:
         pass
-    return HttpResponse("You're out.<a href='http://127.0.0.1:8000/'> home page</a>")
+    return HttpResponse("You're out.<a href='http://127.0.0.1:8000/'> home page</a>")  # крайне не логично зашивать полный путь url, за некоторыми исклюениями (копирайт, интеграция с каким либо внешним сервисом ) можно было просто сделать: <a href='/'> home page</a>
